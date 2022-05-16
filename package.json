@@ -1,0 +1,64 @@
+{
+  "name": "pinia-oidc",
+  "version": "1.0.0",
+  "homepage": "https://github.com/zhazhazhu/pinia-oidc",
+  "license": "MIT",
+  "repository": {
+    "type": "git"
+  },
+  "main": "dist/pinia-oidc.cjs.js",
+  "module": "dist/pinia-oidc.esm.js",
+  "typings": "index.d.ts",
+  "description": "Vue.js implementation of oidc-client using pinia and vue-router",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "oidc",
+    "oidc-client",
+    "open id",
+    "open id client",
+    "vue oidc",
+    "vue open id"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "lint": "eslint ./src --config=.eslintrc.js",
+    "lint:fix": "eslint --fix ./src --config=.eslintrc.js",
+    "test": "nyc mocha",
+    "pretest": "npm run lint && npm run build",
+    "preversion": "npm test"
+  },
+  "peerDependencies": {
+    "oidc-client": ">= 1.10.1"
+  },
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "oidc-client-ts": "^2.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "acorn": "^7.0.0",
+    "atob": "^2.1.2",
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jsdom": "^15.1.1",
+    "mocha": "^6.2.0",
+    "node-storage-shim": "^2.0.0",
+    "nyc": "^14.1.1",
+    "oidc-client": ">= 1.10.1",
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "sinon": "^7.4.1"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "target": "es5",
+    "module": "esnext",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "noImplicitThis": true,
+    "lib": [
+      "es6",
+      "DOM"
+    ],
+    "types": [],
+    "experimentalDecorators": true
+  },
+  "include": [
+    "types/*.d.ts"
+  ],
+  "exclude": []
+}
