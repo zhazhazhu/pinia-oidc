@@ -1,0 +1,11 @@
+import { OidcClientSettings, UserManager } from "oidc-client-ts";
+import { PiniaOidcClientSettings, PiniaOidcStoreListeners } from "../../types/oidc";
+export declare const getOidcConfig: (oidcSettings: any) => PiniaOidcClientSettings;
+export declare const createOidcUserManager: (oidcSettings: OidcClientSettings) => UserManager;
+export declare const getOidcCallbackPath: (callbackUri?: string | undefined, routeBase?: string) => string | null;
+export declare const addUserManagerEventListener: (oidcUserManager: UserManager, eventName: string, eventListener: PiniaOidcStoreListeners[keyof PiniaOidcStoreListeners]) => void;
+export declare const tokenExp: (token: string) => number | null;
+export declare const tokenIsExpired: (token: string) => boolean;
+export declare const removeUserManagerEventListener: (oidcUserManager: UserManager, eventName: string, eventListener: PiniaOidcStoreListeners) => void;
+export declare const processSilentSignInCallback: (oidcSettings: OidcClientSettings) => Promise<void>;
+export declare const processSignInCallback: (oidcSettings: OidcClientSettings) => Promise<unknown>;

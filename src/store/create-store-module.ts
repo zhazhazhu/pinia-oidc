@@ -87,7 +87,10 @@ const createStoreModule = (
   }
 
   function isAuthenticated(store) {
-    if (store[storeSettings.isAuthenticatedBy]) {
+    if (
+      storeSettings?.isAuthenticatedBy &&
+      store?.[storeSettings.isAuthenticatedBy]
+    ) {
       return true;
     }
 
@@ -250,7 +253,7 @@ const createStoreModule = (
           return;
         }
         let hasAccess = true;
-        const getUserPromise: Promise<User> = new Promise((resolve) => {
+        const getUserPromise: Promise<User | null> = new Promise((resolve) => {
           oidcUserManager
             .getUser()
             .then((user) => {

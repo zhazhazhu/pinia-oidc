@@ -3,23 +3,34 @@
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "target": "es5",
-    "module": "esnext",
+    "target": "ESNEXT",
+    "module": "ESNEXT",
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "downlevelIteration": true,
-    "noImplicitThis": true,
+    "noImplicitThis": false,
+    "declaration": true, // 生成*.d.ts
+    "outDir": "./dist",
+    "typeRoots": [
+      "node_modules/@types", // 默认值
+    ],
     "lib": [
       "es6",
       "DOM"
     ],
-    "types": [],
+    "types": [
+      "./types"
+    ],
     "experimentalDecorators": true
   },
   "include": [
-    "types/*.d.ts"
+    "types/*.d.ts",
+    "./**/*.ts",
+    "./**/*.d.ts"
   ],
-  "exclude": []
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -75,7 +75,7 @@ export const createOidcUserManager = (oidcSettings: OidcClientSettings) => {
 };
 
 export const getOidcCallbackPath = (
-  callbackUri: string,
+  callbackUri?: string,
   routeBase = "/"
 ): string | null => {
   if (callbackUri) {
