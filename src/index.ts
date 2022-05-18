@@ -10,20 +10,14 @@ import {
 import * as utils from "./services/utils";
 import createStoreModule from "./store/create-store-module";
 
-export const piniaOidcCreateUserManager = createOidcUserManager;
-
-export const piniaOidcCreateStoreModule = createStoreModule;
-
-export const piniaOidcCreateNextRouterMiddleware = createNextRouter;
-
-export const piniaOidcCreateRouterMiddleware = createRouter;
-
-export const piniaOidcProcessSilentSignInCallback = processSilentSignInCallback;
-
-export const piniaOidcProcessSignInCallback = processSignInCallback;
-
-export const piniaOidcGetOidcCallbackPath = getOidcCallbackPath;
-
-export const vuexDispatchCustomBrowserEvent = dispatchCustomBrowserEvent;
-
-export const piniaOidcUtils = utils;
+export {
+  createOidcUserManager as piniaOidcCreateUserManager,
+  createStoreModule as piniaOidcCreateStoreModule,
+  createNextRouter as piniaOidcCreateNextRouterMiddleware,
+  createRouter as piniaOidcCreateRouterMiddleware,
+  processSilentSignInCallback as piniaOidcProcessSilentSignInCallback,
+  processSignInCallback as piniaOidcProcessSignInCallback,
+  getOidcCallbackPath as piniaOidcGetOidcCallbackPath,
+  dispatchCustomBrowserEvent as vuexDispatchCustomBrowserEvent,
+  utils as piniaOidcUtils,
+};
