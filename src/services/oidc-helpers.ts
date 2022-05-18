@@ -55,7 +55,7 @@ export const getOidcConfig = (oidcSettings): PiniaOidcClientSettings => {
   return objectAssign<PiniaOidcClientSettings>([
     defaultOidcConfig,
     snakeCasedSettings(oidcSettings),
-    { automaticSilentRenew: false }, // automaticSilentRenew is handled in vuex and not by user manager
+    { automaticSilentRenew: false }, // automaticSilentRenew is handled in pinia and not by user manager
   ]);
 };
 
@@ -159,7 +159,7 @@ export const processSignInCallback = (oidcSettings: OidcClientSettings) => {
     oidcUserManager
       .signinRedirectCallback()
       .then((user) => {
-        resolve(sessionStorage.getItem("vuex_oidc_active_route") || "/");
+        resolve(sessionStorage.getItem("pinia_oidc_active_route") || "/");
       })
       .catch((err) => {
         reject(err);

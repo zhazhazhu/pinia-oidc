@@ -18,6 +18,6 @@ export {
   processSilentSignInCallback as piniaOidcProcessSilentSignInCallback,
   processSignInCallback as piniaOidcProcessSignInCallback,
   getOidcCallbackPath as piniaOidcGetOidcCallbackPath,
-  dispatchCustomBrowserEvent as vuexDispatchCustomBrowserEvent,
+  dispatchCustomBrowserEvent as piniaDispatchCustomBrowserEvent,
   utils as piniaOidcUtils,
 };

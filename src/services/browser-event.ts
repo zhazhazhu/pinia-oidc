@@ -14,7 +14,7 @@ function createCustomEvent(
   detail: PiniaOidcStoreListeners,
   params: CustomEventParams
 ) {
-  const prefixedEventName = "vuexoidc:" + eventName;
+  const prefixedEventName = "oidc:" + eventName;
 
   if (typeof window.CustomEvent === "function") {
     params = objectAssign([params, { detail: detail }]);

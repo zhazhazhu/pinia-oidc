@@ -187,7 +187,7 @@ const createStoreModule = <T>(
     eventName: string,
     payload: PiniaOidcStoreListeners
   ) => {
-    // oidcError and automaticSilentRenewError are not UserManagement events, they are events implemeted in vuex-oidc,
+    // oidcError and automaticSilentRenewError are not UserManagement events, they are events implemeted in pinia-oidc,
     if (typeof oidcEventListeners[eventName] === "function") {
       oidcEventListeners[eventName](payload);
     }
@@ -339,9 +339,9 @@ const createStoreModule = <T>(
         payload = { redirectPath: payload };
       }
       if (payload.redirectPath) {
-        sessionStorage.setItem("vuex_oidc_active_route", payload.redirectPath);
+        sessionStorage.setItem("pinia_oidc_active_route", payload.redirectPath);
       } else {
-        sessionStorage.removeItem("vuex_oidc_active_route");
+        sessionStorage.removeItem("pinia_oidc_active_route");
       }
       // Take options for signinRedirect from 1) payload or 2) storeSettings if defined there
       const options =
@@ -356,7 +356,7 @@ const createStoreModule = <T>(
           .signinRedirectCallback(url)
           .then((user) => {
             this["oidcWasAuthenticated"](user);
-            resolve(sessionStorage.getItem("vuex_oidc_active_route") || "/");
+            resolve(sessionStorage.getItem("pinia_oidc_active_route") || "/");
           })
           .catch((err) => {
             this["setOidcError"](errorPayload("oidcSignInCallback", err));
