@@ -1,5 +1,3 @@
-import { User } from "oidc-client-ts";
-
 export type PiniaStore<S, G, A> = {
   id: string;
   state: () => S;
@@ -7,11 +5,11 @@ export type PiniaStore<S, G, A> = {
   actions?: A;
 };
 
-export interface PiniaState {
+export interface PiniaState<T = any> {
   access_token: string | null;
   id_token: string | null;
   refresh_token: string | null;
-  user: User | null;
+  user: T | null;
   scopes: any;
   is_checked: boolean;
   events_are_bound: boolean;

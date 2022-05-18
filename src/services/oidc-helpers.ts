@@ -59,7 +59,9 @@ export const getOidcConfig = (oidcSettings): PiniaOidcClientSettings => {
   ]);
 };
 
-export const createOidcUserManager = (oidcSettings: OidcClientSettings) => {
+export const createOidcUserManager = (
+  oidcSettings: OidcClientSettings
+): UserManager => {
   const oidcConfig = getOidcConfig(oidcSettings);
 
   requiredConfigProperties.forEach((requiredProperty) => {

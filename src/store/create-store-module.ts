@@ -1,4 +1,4 @@
-import { SignoutRequest, User } from "oidc-client-ts";
+import { User } from "oidc-client-ts";
 import {
   AuthenticateOidcSilentPayload,
   PiniaOidcClientSettings,
@@ -7,7 +7,6 @@ import {
 } from "../../types/oidc";
 import { PiniaState, PiniaStore } from "../../types/store";
 import { dispatchCustomBrowserEvent } from "../services/browser-event";
-import { openUrlWithIframe } from "../services/navigation";
 import {
   addUserManagerEventListener,
   createOidcUserManager,
@@ -19,7 +18,7 @@ import {
 } from "../services/oidc-helpers";
 import { objectAssign } from "../services/utils";
 
-const state: PiniaState = {
+const state = {
   access_token: null,
   id_token: null,
   refresh_token: null,
@@ -30,7 +29,7 @@ const state: PiniaState = {
   error: null,
 };
 
-const createStoreModule = (
+const createStoreModule = <T>(
   oidcSettings: PiniaOidcClientSettings,
   storeSettings: PiniaOidcStoreSettings = {},
   oidcEventListeners: PiniaOidcStoreListeners = {}
@@ -197,12 +196,17 @@ const createStoreModule = (
     }
   };
 
-  const store = <S, G, A>(
+  const store = <G, A>(
     id,
-    state: S,
+    state: PiniaState<T>,
     getters?: G,
     actions?: A
-  ): PiniaStore<S, G, A> => ({ id, state: () => state, getters, actions });
+  ): PiniaStore<PiniaState<T>, G, A> => ({
+    id,
+    state: () => state,
+    getters,
+    actions,
+  });
 
   const getters = {
     oidcIsAuthenticated() {
@@ -346,7 +350,7 @@ const createStoreModule = (
         this["setOidcError"](errorPayload("authenticateOidc", err));
       });
     },
-    oidcSignInCallback(url: string) {
+    oidcSignInCallback(url?: string): Promise<string> {
       return new Promise((resolve, reject) => {
         oidcUserManager
           .signinRedirectCallback(url)
@@ -377,7 +381,7 @@ const createStoreModule = (
           this["setOidcError"](errorPayload("authenticateOidcPopup", err));
         });
     },
-    oidcSignInPopupCallback(url: string) {
+    oidcSignInPopupCallback(url?: string): Promise<void> {
       return new Promise((resolve, reject) => {
         oidcUserManager.signinPopupCallback(url).catch((err) => {
           this["setOidcError"](errorPayload("authenticateOidcPopup", err));
@@ -447,7 +451,7 @@ const createStoreModule = (
         payload.eventListener
       );
     },
-    signOutOidc(payload) {
+    signOutOidc(payload = {}) {
       /* istanbul ignore next */
       return oidcUserManager.signoutRedirect(payload).then(() => {
         this["unsetOidcAuth"]();
@@ -484,7 +488,8 @@ const createStoreModule = (
                 args.id_token_hint = payload.id_token_hint;
               }
               //此处api不确定
-              openUrlWithIframe(new SignoutRequest(args).url);
+              oidcUserManager.signoutPopup(args);
+              // openUrlWithIframe(new SignoutRequest(args).url);
             })
             .catch((err) => reject(err));
         } catch (err) {
