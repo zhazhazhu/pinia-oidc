@@ -1,6 +1,6 @@
 {
   "name": "pinia-oidc",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "homepage": "https://github.com/zhazhazhu/pinia-oidc",
   "license": "MIT",
   "repository": {
@@ -30,7 +30,8 @@
     "preversion": "npm test"
   },
   "peerDependencies": {
-    "oidc-client": ">= 1.10.1"
+    "oidc-client": ">= 1.10.1",
+    "pinia": ">= 2.0.0"
   },
   "files": [
     "dist",
