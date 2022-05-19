@@ -366,7 +366,7 @@ const createStoreModule = <T>(
       });
     },
     authenticateOidcSilent(payload: AuthenticateOidcSilentPayload = {}) {
-      return authenticateOidcSilent(payload);
+      return authenticateOidcSilent.call(actions, payload);
     },
     authenticateOidcPopup(payload: AuthenticateOidcSilentPayload = {}) {
       // Take options for signinPopup from 1) payload or 2) storeSettings if defined there
@@ -504,7 +504,7 @@ const createStoreModule = <T>(
     removeOidcUser() {
       /* istanbul ignore next */
       return oidcUserManager.removeUser().then(() => {
-        this["unsetOidcAuth"];
+        this["unsetOidcAuth"]();
       });
     },
     clearStaleState() {

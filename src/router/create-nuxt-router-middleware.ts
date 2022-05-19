@@ -1,4 +1,6 @@
-const createNextRouter = (store) => {
+import { Store } from "../../types/store";
+
+const createNextRouter = (store: Store) => {
   return (context) => {
     return new Promise((resolve, reject) => {
       store["oidcCheckAccess"](context.route)
