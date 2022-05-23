@@ -12,6 +12,7 @@
     "downlevelIteration": true,
     "noImplicitThis": false,
     "declaration": true, // 生成*.d.ts
+    "declarationDir": "./types",
     "outDir": "./dist",
     "typeRoots": [
       "node_modules/@types", // 默认值

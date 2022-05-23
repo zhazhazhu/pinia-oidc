@@ -1,7 +1,3 @@
-import createStoreModule from "../src/store/create-store-module";
-
-export type Store = ReturnType<typeof createStoreModule>;
-
 export type PiniaStore<S, G, A> = {
   id: string;
   state: () => S;

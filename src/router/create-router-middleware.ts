@@ -1,4 +1,4 @@
-import { Store } from "../../types/store";
+import { Store } from "../index";
 
 const createRouter = (store: Store) => {
   return (to, from, next) => {

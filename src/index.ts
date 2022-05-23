@@ -10,6 +10,8 @@ import {
 import * as utils from "./services/utils";
 import createStoreModule from "./store/create-store-module";
 
+export type Store = ReturnType<typeof createStoreModule>;
+
 export {
   createOidcUserManager as piniaOidcCreateUserManager,
   createStoreModule as piniaOidcCreateStoreModule,
