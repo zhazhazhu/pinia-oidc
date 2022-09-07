@@ -21,13 +21,13 @@ const oidcSettings = {
   scope: "",
   client_id: "",
   client_secret: "",
-  redirectUri: origin + "/oidc-callback",
-  popupRedirectUri: origin + "/oidc-popup-callback",
+  redirect_uri: origin + "/oidc-callback",
+  popup_redirect_uri: origin + "/oidc-popup-callback",
   response_type: "",
   automaticSilentRenew: true,
   automaticSilentSignin: false,
-  silentRedirectUri: origin + "/silent-renew-oidc.html",
-  acr_values: null,
+  silent_redirect_uri: origin + "/silent-renew-oidc.html",
+  acr_values: undefined,
 };
 
 //创建oidc储存
