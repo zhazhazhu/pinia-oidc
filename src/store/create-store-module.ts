@@ -278,7 +278,7 @@ const createStoreModule = <T>(
                 this["unsetOidcAuth"]();
               }
               if (authenticateSilently) {
-                authenticateOidcSilent({ ignoreErrors: true }).catch(() => {});
+                authenticateOidcSilent.call(actions, { ignoreErrors: true }).catch(() => {});
               }
             } else {
               const authenticate = () => {
@@ -291,7 +291,7 @@ const createStoreModule = <T>(
               };
               // If silent signin is set up, try to authenticate silently before denying access
               if (authenticateSilently) {
-                authenticateOidcSilent({ ignoreErrors: true })
+                authenticateOidcSilent.call(actions, { ignoreErrors: true })
                   .then(() => {
                     oidcUserManager
                       .getUser()
@@ -398,7 +398,7 @@ const createStoreModule = <T>(
         });
         if (oidcSettings.automaticSilentRenew) {
           oidcUserManager.events.addAccessTokenExpiring(() => {
-            authenticateOidcSilent().catch((err) => {
+            authenticateOidcSilent.call(actions).catch((err) => {
               dispatchCustomErrorEvent(
                 "automaticSilentRenewError",
                 errorPayload("authenticateOidcSilent", err)
