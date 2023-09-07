@@ -1,3 +1,7 @@
+## Look this
+
+if you use vue3 then recommend you use [vue3-oidc](https://github.com/zhazhazhu/vue3-oidc),it doesn't need to rely on any store, router. it can reactive auth and user data,better api
+
 ## 📦 Install
 
 ```bash
