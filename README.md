@@ -35,9 +35,8 @@ const oidcSettings = {
 };
 
 //创建oidc储存
-export const useOidcStore = defineStore(
-  piniaOidcCreateStoreModule(oidcSettings)
-);
+const oidcStoreModule = piniaOidcCreateStoreModule(oidcSettings)
+export const useOidcStore = defineStore('oidc', oidcStoreModule)
 
 //创建路由中间件
 router.beforeEach(piniaOidcCreateRouterMiddleware(useOidcStore()));
